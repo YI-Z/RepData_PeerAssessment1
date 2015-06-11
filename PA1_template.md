@@ -1,4 +1,9 @@
-# Reproducible Research: Peer Assessment 1
+---
+title: "Reproducible Research: Peer Assessment 1"
+output: "PA1_template.md"
+  html_document: "PA1_template.html"
+    keep_md: true
+---
 
 This is a report for the analysis of the data from a personal activity monitoring device. This device collects data at 5 minute intervals through out the day. The data consists of two months of data from an anonymous individual collected during the months of October and November, 2012 and include the number of steps taken in 5 minute intervals each day.
 
@@ -31,7 +36,7 @@ total_daily <- activity %>% group_by(date) %>% summarise(daily_steps = sum(steps
 with(total_daily, hist(daily_steps, breaks = 20, xlab = "total daily steps", main = "Histogram of total daily steps"))
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-3-1.png) 
+![plot of chunk unnamed-chunk-3](figure/unnamed-chunk-3-1.png) 
 
 ```r
 ## Calculate and report the mean and median of the total number of steps taken per day
@@ -51,7 +56,7 @@ interval_step <- activity %>% group_by(interval) %>% summarise(ave_steps = mean(
 with(interval_step, plot(ave_steps ~ interval, type = "l", ylab = "average steps"))
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-4-1.png) 
+![plot of chunk unnamed-chunk-4](figure/unnamed-chunk-4-1.png) 
 
 ```r
 ## Which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps?
@@ -85,14 +90,14 @@ total_daily_new <- activity_new %>% group_by(date) %>% summarise(daily_steps = s
 hist(total_daily_new$daily_steps, breaks = 20, xlab = "total daily steps", main = "New histogram of total daily steps")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-6-1.png) 
+![plot of chunk unnamed-chunk-6](figure/unnamed-chunk-6-1.png) 
 
 ```r
 ## Calculate and report the mean and median of the total number of steps taken per day
 mean_new <- mean(total_daily_new$daily_steps)
 med_new <- median(total_daily_new$daily_steps)
 ```
-The original data has been filled in with NA replaced by average value of the interval. The mean of the new total number of steps taken per day is 1.0766189\times 10^{4}, and the median is 1.0766189\times 10^{4}. These value differ from mean and median values of estimations with NA ignored, which are 9354.2295082 and 10395, respectively.
+The original data has been filled in with NA replaced by average value of the interval. The mean of the new total number of steps taken per day is 1.0766189 &times; 10<sup>4</sup>, and the median is 1.0766189 &times; 10<sup>4</sup>. These value differ from mean and median values of estimations with NA ignored, which are 9354.2295082 and 10395, respectively.
 
 The imputing of missing values can reduce the bias of the data and make data more reliable.
 
@@ -116,4 +121,4 @@ require(ggplot2)
 qplot(interval, ave_steps, data = interval_wkday, facets = .~wkday, geom = "line", ylab = "Number of steps")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-7-1.png) 
+![plot of chunk unnamed-chunk-7](figure/unnamed-chunk-7-1.png) 
