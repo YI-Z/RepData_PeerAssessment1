@@ -1,9 +1,11 @@
 ---
 title: "Reproducible Research: Peer Assessment 1"
-output: "PA1_template.md"
-  html_document: "PA1_template.html"
+output: 
+  html_document: 
     keep_md: true
 ---
+
+# Reproducible Research: Peer Assessment1
 
 This is a report for the analysis of the data from a personal activity monitoring device. This device collects data at 5 minute intervals through out the day. The data consists of two months of data from an anonymous individual collected during the months of October and November, 2012 and include the number of steps taken in 5 minute intervals each day.
 
@@ -11,13 +13,13 @@ The analysis will be divided into the following parts:
 
 ```{r  message=FALSE} 
 require(knitr)
-opts_chunk$set(echo=TRUE, warning=FALSE, message=FALSE, cache=TRUE) #enrivonmental setting
+opts_chunk$set(echo=TRUE, warning=FALSE, message=FALSE, cache=FALSE) #enrivonmental setting
 ```
 
 ## Loading and preprocessing the data
 ```{r}
 activity <- read.csv("activity.csv", header = T, na.strings = "NA")
-activity$date <- as.Date(activity$date, "%Y-%m-%d") # transform the data object
+activity$date <- as.Date(activity$date, "%Y-%m-%d") # transform the date object
 ```
 
 
